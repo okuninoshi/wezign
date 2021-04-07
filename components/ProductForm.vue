@@ -83,7 +83,7 @@ export default {
       formData.append("data", JSON.stringify(data));
       this.$axios({
         method: "post",
-        url: "http://localhost:1337/products",
+        url: `${process.env.API_AUTH_URL}/products`,
         data: formData,
         headers: { 
           "Content-Type": "multipart/form-data",
