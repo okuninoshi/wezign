@@ -1,20 +1,30 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" style="padding:5vh 5vw;">
-      <h1>Product validation form.</h1>
-    </v-col>
-    <v-col cols="12">
-      <Form />
+      <h1 v-if="this.isAuthenticated" class="text-center">welcome {{ loggedInUser.username }}.</h1>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import Form from '~/components/Form.vue' 
+import { mapGetters } from "vuex";
 
 export default {
-  components: {
-    Form
+  data() {
+    return {
+    }
   },
+  computed: {
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
+  },
+  mounted() {
+    !this.isAuthenticated && this.$nuxt.$router.push('/signup')
+  }
 }
 </script>
+
+<style scoped>
+.col {
+  padding: 5vh 5vw;
+}
+</style>
