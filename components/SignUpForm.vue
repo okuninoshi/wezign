@@ -58,7 +58,7 @@ export default {
       this.error = null;
       try {
         this.$axios.setToken(false);
-        await this.$axios.post("auth/local/register", {
+        await this.$axios.post("/auth/local/register", {
           username: this.username,
           email: this.email,
           password: this.password,
