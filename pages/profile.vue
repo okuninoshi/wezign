@@ -61,7 +61,7 @@ export default {
       return productIsValid
     },
     allProducts: function () {
-      const allProduct = this.products;
+      const allProduct = this.products.filter(product => product.author && product.author.username === this.loggedInUser.username);
       return allProduct
     }
   },
@@ -69,9 +69,11 @@ export default {
     try {
       const response = await this.$axios.get('https://valimage.herokuapp.com/products')
       this.products = response.data
+      console.log(this.products)
     } catch (error) {
       this.error = error;
     }
+    console.log("loggedInUser", this.loggedInUser)
   }
 }
 </script>
