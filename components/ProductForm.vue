@@ -92,7 +92,7 @@ export default {
       formData.append("data", JSON.stringify(data));
       this.$axios({
         method: "post",
-        url: `${process.env.API_AUTH_URL}/products`,
+        url: 'https://valimage.herokuapp.com/products',
         data: formData,
         headers: { 
           "Content-Type": "multipart/form-data",

@@ -1,4 +1,3 @@
-require('dotenv').config()
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -15,16 +14,12 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~plugins/axios'],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
@@ -42,9 +37,7 @@ export default {
     '@nuxtjs/auth',
   ],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL: process.env.API_AUTH_URL
-  },
+  axios: {},
   // auth module configuration
   auth: {
     strategies: {

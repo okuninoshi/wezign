@@ -58,7 +58,7 @@ export default {
       this.error = null;
       try {
         this.$axios.setToken(false);
-        await this.$axios.post(`${process.env.API_AUTH_URL}/auth/local/register`, {
+        await this.$axios.post('https://valimage.herokuapp.com/auth/local/register', {
           username: this.username,
           email: this.email,
           password: this.password,
