@@ -57,6 +57,9 @@ export default {
 h1 {
   font-size: calc(1.825rem + 2vw);
 }
+h2{
+  font-size: calc(1rem + 1.4vw);
+}
 a{
   text-decoration: none;
   margin:0 1vw;

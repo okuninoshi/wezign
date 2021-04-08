@@ -2,17 +2,24 @@
   <v-container>
     <v-row>
       <v-col cols="12" class="text-center">
-        <h1>
+        <v-alert
+          color="#ddd"
+          border="bottom"
+          colored-border
+          icon="mdi-bell"
+        >
+        <h2>
           you have
-          <span>{{ numberOfValidProduct }}</span>
+          <strong>{{ numberOfValidProduct }}</strong>
           valid products
-        </h1>
-        <div class="mt-8">
-          <v-btn nuxt plain to="/validation" class="py-5">
-            validate a new product &nbsp;
-            <v-icon dark>mdi-arrow-right</v-icon>
-          </v-btn>
-        </div>
+        </h2>
+        </v-alert>
+      </v-col>
+      <v-col cols="12" class="mt-8 text-center">
+        <v-btn nuxt plain to="/validation" class="py-5">
+          validate a new product &nbsp;
+          <v-icon dark>mdi-arrow-right</v-icon>
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -43,7 +50,7 @@ export default {
   },
   async mounted () {
     try {
-      const response = await this.$axios.get('http://localhost:1337/products')
+      const response = await this.$axios.get(`${process.env.API_AUTH_URL}/products`)
       this.products = response.data
     } catch (error) {
       this.error = error;

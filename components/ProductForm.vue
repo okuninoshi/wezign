@@ -1,8 +1,16 @@
 <template>
   <v-row justify="center">
     <v-col cols="12" class="d-flex justify-center">
-      <div class="success" v-if="success">
+      <div v-if="success">
+        <v-alert
+          dismissible
+          elevation="7"
+          outlined
+          type="success"
+          transition="scale-transition"
+        >
         Great! Your product has been sent to validation.
+        </v-alert>
       </div>
     </v-col>
     <v-col cols="12" md="8">
@@ -23,11 +31,12 @@
           capture="environment"
         /> -->
         <v-file-input
-         class="my-8"
+          class="my-8"
           name="image"
           accept="image/*"
           capture="environment"
           append-icon="mdi-camera"
+          prepend-icon=""
           label="product image"
           filled
           required
@@ -37,7 +46,7 @@
           v-model="isValid"
           hidden
         />
-        <v-btn width="100%" large outlined type="submit" name="submit" color="secondary"> Send </v-btn>
+        <v-btn :loading="loading" width="100%" large outlined type="submit" name="submit" color="secondary"> Send </v-btn>
       </form>
     </v-col>
   </v-row>
@@ -97,6 +106,8 @@ export default {
       })
       .finally(() => {
         this.loading = false
+        this.name = ""
+        formData.delete("image")
       });
     }
   },
@@ -110,8 +121,5 @@ export default {
 }
 form{
   padding:5vh 5vw;
-}
-.success{
-  color: yellowgreen;
 }
 </style>

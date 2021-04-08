@@ -1,6 +1,7 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" style="padding:5vh 5vw;">
+      <v-divider></v-divider>
       <h1 v-if="this.isAuthenticated" class="text-center">welcome {{ loggedInUser.username }}.</h1>
     </v-col>
   </v-row>
