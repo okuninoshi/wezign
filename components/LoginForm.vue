@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <div v-show="error !== null">
+    <div v-if="error !== ''">
       <v-alert
           dismissible
           elevation="7"
