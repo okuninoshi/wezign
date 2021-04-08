@@ -38,13 +38,9 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/auth',
     '@nuxtjs/dotenv',
-    '@nuxtjs/strapi',
+    '@nuxtjs/auth',
   ],
-  strapi: {
-    entities: ['products'],
-  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.API_AUTH_URL
@@ -55,12 +51,12 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: 'auth/local',
+            url: 'https://valimage.herokuapp.com/auth/local',
             method: 'post',
             propertyName: 'jwt'
           },
           user: {
-            url: 'users/me',
+            url: 'https://valimage.herokuapp.com/users/me',
             method: 'get',
             propertyName: false
           },

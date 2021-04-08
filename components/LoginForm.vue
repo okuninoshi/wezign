@@ -48,7 +48,7 @@ export default {
     async login() {
       this.error = null;
       try {
-        await this.$auth.loginWith("local", {
+        await this.$auth.loginWith('local', {
           data: {
             identifier: this.identifier,
             password: this.password,

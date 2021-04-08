@@ -2,21 +2,13 @@
   <v-app dark>
     <v-app-bar :clipped-left="clipped" fixed app elevation="0" elevate-on-scroll>
       <div>
-        <NuxtLink to="/" exact outlined> Home </NuxtLink>
+        <NuxtLink to="/" exact outlined> 
+          <v-icon dark>
+            mdi-home
+          </v-icon> </NuxtLink>
         <NuxtLink v-if="isAuthenticated" to="/profile" exact>profile</NuxtLink>
       </div>
       <v-spacer></v-spacer>
-      <!-- <span class="avatar" v-if="isAuthenticated">
-        <v-avatar
-          color="secondary"
-          size="35"
-        >
-          <v-icon dark>
-            mdi-account-circle
-          </v-icon>
-        </v-avatar>
-        {{loggedInUser.username}}
-      </span> -->
       <v-btn v-if="isAuthenticated" outlined color="#F40009" @click="logout"> Logout </v-btn>
     </v-app-bar>
     <v-main style="padding-top: 15vh;">
@@ -68,7 +60,4 @@ a{
 .nuxt-link-active {
   text-decoration: underline !important;
 }
-/* .avatar{
-  margin-right: 3vw;
-} */
 </style>
