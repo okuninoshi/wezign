@@ -4,12 +4,12 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - valimage',
+    titleTemplate: 'valimage - %s',
     title: 'valimage',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'vaildate product images' },
+      { hid: 'description', name: 'description', content: 'validation de produits via image' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

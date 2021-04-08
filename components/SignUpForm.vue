@@ -10,7 +10,7 @@
     >
       {{ error }}
     </v-alert>
-    <h2 class="mb-8">Register</h2>
+    <h2 class="mb-2">Register</h2>
     <form @submit.prevent="register">
       <div>
         <v-text-field

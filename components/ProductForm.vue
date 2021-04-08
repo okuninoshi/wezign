@@ -60,6 +60,7 @@ export default {
       loading: false,
       success: false,
       errored: false,
+      error:'',
       name: "",
       isValid: false,
       rules: [
@@ -105,11 +106,12 @@ export default {
       .then(res => this.success = res.status )
       .catch(error => {
         this.errored = true
-        console.log(error)
+        this.error = error
       })
       .finally(() => {
         this.loading = false
         this.name = ""
+        this.$nuxt.$router.push('/profile')
       });
     }
   },

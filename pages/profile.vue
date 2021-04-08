@@ -4,14 +4,28 @@
       <v-col cols="12" class="text-center">
         <v-alert
           color="#ddd"
-          border="bottom"
+          border="left"
           colored-border
           icon="mdi-bell"
         >
         <h2>
-          you have
+          You have
           <strong>{{ numberOfValidProduct }}</strong>
           valid products
+        </h2>
+        </v-alert>
+      </v-col>
+      <v-col cols="12" class="text-center">
+        <v-alert
+          color="#ddd"
+          border="left"
+          colored-border
+          icon="mdi-chart-bar"
+        >
+        <h2>
+          You have submited
+          <strong>{{ allProducts.length }}</strong>
+          products
         </h2>
         </v-alert>
       </v-col>
@@ -45,6 +59,10 @@ export default {
     validProducts: function () {
       const productIsValid = this.products.filter(product => product.isValid == true);
       return productIsValid
+    },
+    allProducts: function () {
+      const allProduct = this.products;
+      return allProduct
     }
   },
   async mounted () {
