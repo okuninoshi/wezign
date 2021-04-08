@@ -16,7 +16,7 @@
         </v-alert>
       </v-col>
       <v-col cols="12" class="mt-8 text-center">
-        <v-btn nuxt plain to="/validation" class="py-5">
+        <v-btn nuxt outlined to="/validation" class="py-5">
           validate a new product &nbsp;
           <v-icon dark>mdi-arrow-right</v-icon>
         </v-btn>
@@ -31,7 +31,6 @@ export default {
   middleware: "auth",
   data() {
     return {
-      user: this.$store.state.user,
       products: [],
       error: null,
     }
@@ -50,7 +49,7 @@ export default {
   },
   async mounted () {
     try {
-      const response = await this.$axios.get(`${process.env.API_AUTH_URL}/products`)
+      const response = await this.$axios.get('https://valimage.herokuapp.com/products')
       this.products = response.data
     } catch (error) {
       this.error = error;

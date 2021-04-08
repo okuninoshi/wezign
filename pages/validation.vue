@@ -1,14 +1,14 @@
 <template>
-  <v-container>
+  <div>
     <v-row v-if="!isAuthenticated">
-        <h1 style="color: crimson"> you need to login to be able to send images</h1>
+        <v-alert type="error" dismissible transition="scale-transition" > you need to login to be able to send images</v-alert>
     </v-row>
     <v-row v-if="isAuthenticated">
-      <v-col cols="12" class="text-center">
+      <v-col cols="12">
         <ProductForm />
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 <script>
 import { mapGetters } from "vuex";

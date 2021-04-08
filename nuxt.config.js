@@ -73,7 +73,7 @@ export default {
       themes: {
         dark: {
           primary: "#cccc00",
-          accent: "#cccc00",
+          accent: "#FFA500",
           secondary: "#cccc00",
           info: "#99ff33",
           warning: "#fff15a",

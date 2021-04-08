@@ -33,13 +33,13 @@
         <v-file-input
           class="my-8"
           name="image"
-          accept="image/*"
+          accept="image/png, image/jpeg, image/bmp"
+          :rules="rules"
           capture="environment"
           append-icon="mdi-camera"
           prepend-icon=""
           label="product image"
           filled
-          required
         ></v-file-input>
         <input
           name="isValid"
@@ -62,6 +62,9 @@ export default {
       errored: false,
       name: "",
       isValid: false,
+      rules: [
+        value => !value || value.size < 5000000 || 'Avatar size should be less than 5 MB!',
+      ],
     };
   },
   computed: {
@@ -107,7 +110,6 @@ export default {
       .finally(() => {
         this.loading = false
         this.name = ""
-        formData.delete("image")
       });
     }
   },
@@ -120,6 +122,6 @@ export default {
   margin-left: auto;
 }
 form{
-  padding:5vh 5vw;
+  padding:5vh 3vw;
 }
 </style>

@@ -1,15 +1,24 @@
 <template>
-  <div class="text-center my-12">
-    <div v-show="error !== ''" class="p-3 ">
-      <p>{{ error }}</p>
+  <div class="text-center">
+    <div v-show="error !== ''">
+      <v-alert
+          dismissible
+          elevation="7"
+          outlined
+          type="error"
+          transition="scale-transition"
+        >
+        {{ error }}
+      </v-alert>
     </div>
-    <h1 class="my-8">Login</h1>
+    <h2 class="mb-8 mt-4">Login</h2>
     <form method="post" @submit.prevent="login">
       <div>
         <v-text-field
           label="Email"
           v-model="identifier"
           type="email"
+          :rules="[rules.required, rules.email]"
           filled
         ></v-text-field>
       </div>
@@ -18,6 +27,7 @@
           label="password"
           v-model="password"
           type="password"
+          :rules="[rules.required]"
           filled
         ></v-text-field>
       </div>
@@ -26,6 +36,7 @@
           :disabled="identifier === '' || password === ''"
           outlined
           large
+          color="#FFA500"
           width="100%"
           type="submit"
         >
@@ -36,13 +47,25 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       identifier: '',
       password: '',
       error: '',
+      rules: {
+        required: value => !!value || 'Required.',
+        counter: value => value.length <= 20 || 'Max 20 characters',
+        email: value => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        },
+      },
     }
+  },
+  computed: {
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
   },
   methods: {
     async login() {
@@ -54,7 +77,9 @@ export default {
             password: this.password,
           },
         });
-        this.$router.push("/");
+        if (this.isAuthenticated){
+          this.$router.push("/");
+        }
       } catch (e) {
         this.error = e.response.data.message[0].messages[0].message;
       }
@@ -64,6 +89,6 @@ export default {
 </script>
 <style>
 .button-container{
- margin-top: 3vh;
+ margin-top: 1vh;
 }
 </style>

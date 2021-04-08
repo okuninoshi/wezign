@@ -1,14 +1,23 @@
 <template>
   <div class="text-center my-8">
-    <div v-show="error !== ''">
-      <p>{{ error }}</p>
-    </div>
+    <v-alert
+      v-if="error !== null"
+      dismissible
+      elevation="7"
+      outlined
+      type="error"
+      transition="scale-transition" 
+    >
+      {{ error }}
+    </v-alert>
+    <h2 class="mb-8">Register</h2>
     <form @submit.prevent="register">
       <div>
         <v-text-field
           v-model="email"
           type="email"
           label="email"
+          :rules="[rules.required, rules.email]"
           filled
         ></v-text-field>
       </div>
@@ -17,6 +26,7 @@
           v-model="username"
           type="text"
           label="username"
+          :rules="[rules.required]"
           filled
         ></v-text-field>
       </div>
@@ -25,6 +35,7 @@
           v-model="password"
           type="password"
           label="password"
+          :rules="[rules.required, rules.counter]"
           filled
         ></v-text-field>
       </div>
@@ -51,6 +62,14 @@ export default {
       password: "",
       success: null,
       error: null,
+      rules: {
+        required: value => !!value || 'Required.',
+        counter: value => value.length >= 8 || 'min 8 characters',
+        email: value => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        },
+      },
     };
   },
   methods: {
@@ -65,8 +84,7 @@ export default {
         });
         this.$nuxt.$router.push('/profile')
       } catch (e) {
-        this.error = "username already taken"
-        console.log(e)
+        this.error = e.response.data.message[0].messages[0].message;
       }
     },
   },
@@ -75,6 +93,6 @@ export default {
 
 <style scoped>
 .button-container{
- margin-top: 5vh;
+ margin-top: 1vh;
 }
 </style>

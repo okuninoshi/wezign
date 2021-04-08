@@ -2,10 +2,8 @@
   <v-row justify="center">
      <v-col cols="12" md="8">
       <SignUpForm />
-    </v-col>
-    <v-col cols="12">
-      <div class="mt-4">
-          Already got an account? <nuxt-link to="/login">Login</nuxt-link>
+      <div>
+        Already got an account? <NuxtLink to="/login">Login</NuxtLink>
       </div>
     </v-col>
   </v-row>

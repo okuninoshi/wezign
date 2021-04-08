@@ -6,12 +6,11 @@
           <v-icon dark>
             mdi-home
           </v-icon> </NuxtLink>
-        <NuxtLink v-if="isAuthenticated" to="/profile" exact>profile</NuxtLink>
       </div>
       <v-spacer></v-spacer>
       <v-btn v-if="isAuthenticated" outlined color="#F40009" @click="logout"> Logout </v-btn>
     </v-app-bar>
-    <v-main style="padding-top: 15vh;">
+    <v-main style="padding-top:10vh;">
       <v-container fluid>
         <nuxt />
       </v-container>

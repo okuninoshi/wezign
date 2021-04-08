@@ -1,9 +1,12 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" style="padding:5vh 5vw;">
+    <v-col cols="12" style="padding:3vh 3vw;">
+      <h1 v-if="this.isAuthenticated" class="text-center">Welcome {{ loggedInUser.username }}.</h1>
       <v-divider></v-divider>
-      <h1 v-if="this.isAuthenticated" class="text-center">welcome {{ loggedInUser.username }}.</h1>
     </v-col>
+    <v-btn nuxt larg outlined v-if="this.isAuthenticated" to="/profile" exact>
+      Profile &nbsp; <v-icon dark> mdi-arrow-right </v-icon>
+    </v-btn>
   </v-row>
 </template>
 
